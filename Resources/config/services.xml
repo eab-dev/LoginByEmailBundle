@@ -1,0 +1,20 @@
+<parameters>
+    <!-- override the security providers -->
+    <parameter key="security.authentication.provider.dao.class">Eab\LoginByEmailBundle\Security\AuthenticationProvider</parameter>
+</parameters>
+
+<services>
+    <service id="security.authentication.provider.dao" class="%security.authentication.provider.dao.class%" abstract="true" public="false">
+        <argument /> <!-- User Provider -->
+        <argument type="service" id="security.user_checker" />
+        <argument /> <!-- Provider-shared Key -->
+        <argument type="service" id="security.encoder_factory" />
+        <argument>%security.authentication.hide_user_not_found%</argument>
+        <call method="setRepository">
+            <argument type="service" id="ezpublish.api.repository" />
+        </call>
+        <call method="setSession">
+            <argument type="service" id="session" />
+        </call>
+    </service>
+</services>

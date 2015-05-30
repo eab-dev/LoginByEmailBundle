@@ -1,0 +1,15 @@
+parameters:
+    security.authentication.provider.dao.class: Eab\LoginByEmailBundle\Security\AuthenticationProvider
+
+services:
+    security.authentication.provider.dao:
+        class: %security.authentication.provider.dao.class%
+        arguments:
+            - ~ # User Provider
+            - @security.user_checker
+            - ~ # Provider-shared Key
+            - @security.encoder_factory
+            - %security.authentication.hide_user_not_found%
+        calls:
+            - [ setRepository, [ @ezpublish.api.repository ] ]
+            - [ setSession, [ @session ] ]
