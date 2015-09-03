@@ -1,0 +1,17 @@
+{
+    "name": "eab/loginbyemailbundle",
+    "description": "Bundle for eZ Publish enabling login by email address",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Enterprise AB Ltd",
+            "homepage": "http://eab.uk"
+        }
+    ],
+    "require": {
+        "ezsystems/ezpublish-kernel": "*"
+    },
+    "autoload": {
+        "psr-4": { "Eab\\LoginByEmailBundle\\": "" }
+    }
+}
