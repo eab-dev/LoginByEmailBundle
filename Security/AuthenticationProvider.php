@@ -87,9 +87,13 @@ class AuthenticationProvider extends RepositoryAuthenticationProvider
                 // User was not found by username, try to get the login and load by credentials again
                 try {
                     $users = $this->repository->getUserService()->loadUsersByEmail( $token->getUsername() );
-                    $userLogin = $users[0]->login;
-                    $apiUser = $this->repository->getUserService()
-                        ->loadUserByCredentials( $userLogin, $token->getCredentials() );
+                    if (count($users)) {
+                        $userLogin = $users[0]->login;
+                        $apiUser = $this->repository->getUserService()
+                            ->loadUserByCredentials($userLogin, $token->getCredentials());
+                    } else {
+                        throw new BadCredentialsException('Invalid credentials', 0, $e);
+                    }
                 } catch( NotFoundException $e ) {
                     throw new BadCredentialsException( 'Invalid credentials', 0, $e );
                 }
