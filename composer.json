@@ -1,5 +1,5 @@
 {
-    "name": "eab/loginbyemailbundle",
+    "name": "eab/login-by-email-bundle",
     "description": "Bundle for eZ Publish enabling login by email address",
     "license": "GPL-2.0",
     "authors": [
