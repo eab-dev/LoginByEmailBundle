@@ -1,5 +1,6 @@
 parameters:
     security.authentication.provider.dao.class: Eab\LoginByEmailBundle\Security\AuthenticationProvider
+    ezpublish.security.user_provider.class: Eab\LoginByEmailBundle\Security\UserProvider
 
 services:
     security.authentication.provider.dao:
